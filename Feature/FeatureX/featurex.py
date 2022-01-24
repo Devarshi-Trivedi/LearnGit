@@ -46,10 +46,6 @@ def _chkValilator(tpl, dix):
     return lst
 
 
-        
-
-
-
 def FindEvenSerSum(flist, *args, **kargs ):
 
     # input 
@@ -64,26 +60,14 @@ def FindEvenSerSum(flist, *args, **kargs ):
     if firstelm % 2 != 0:
         firstelm += 1
 
-    mytotal = 0
-
     if rng != None:
-        mytotal = firstelm
-        while(rng > 1):
-            mytotal += rng * 2
-            rng -= 1
-
-        return mytotal
+        return int ((rng * (firstelm * 2 + (rng - 1 ) * 2))/2)
 
     else:
-        for i in range(firstelm, lastelm + 1, 2):
-            mytotal += i
-        return mytotal
+        lastelm = lastelm if lastelm % 2 == 0 else lastelm - 1
 
+        return int((((lastelm - firstelm)/2) + 1) * (firstelm + lastelm) / 2 )
 
-
-
-
-    
 
 
 
