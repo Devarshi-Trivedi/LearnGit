@@ -73,7 +73,23 @@ def listop(lst=None, *arg ):
             'list': lst
         }
 
-    
+    if arg[0] == 'countdix':
+        if lst == None:
+            giveInstOfError('countdix can not perform on empty list')
+        mydix = {}
+
+        for i in lst:
+            if i in mydix.keys():
+                mydix[i] += 1
+            else:
+                mydix[i] = 0
+
+        return {
+            'list': lst,
+            'setlist': list(mydix.keys()),
+            'dict': mydix
+        }
+
     
     
 
