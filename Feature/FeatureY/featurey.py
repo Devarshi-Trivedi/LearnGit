@@ -1,4 +1,6 @@
 # reverse string
+import re
+
 
 class InvalidInputGiven(Exception):
 
@@ -6,17 +8,36 @@ class InvalidInputGiven(Exception):
         self.message = message
 
     def __str__(self):
-        return self.message + ": error occured"
+        return self.message + ': error occured'
 
 
 def inpvalidator(x = None):
 
-    if x == None or not isinstance(x, str):
-        raise InvalidInputGiven('String input needed insted ' + str(type(x)) + ' is given') 
+    try:
 
-    if x == '':
-        raise InvalidInputGiven('Empty string is given')
+        if x == None or x == '' or re.search('^[ ]+$', x):
+            raise InvalidInputGiven('inpvalidator needs non empty string argument')
+
+        if not isinstance(x, str):
+            raise InvalidInputGiven('inpvalidator is looking for string argument instade argument with type ' + str(type(x)) + ' is given')
+
+    except Exception as e:
+        print(e)
+        return False
+
+    else:
+        return True
+
+    
+
+def revString(x):
+
+    return x[::1]
 
 
-if __name__=="__main__":
-    print(inpvalidator('hello'))
+while(1):
+
+    k = input()
+    if inpvalidator(k):
+        print(revString(k), 'stop')
+        break
