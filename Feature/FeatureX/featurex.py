@@ -40,7 +40,8 @@ def _chkValilator(tpl, dix):
                 lst[ind] = dix[sublist[1]]
 
   
-    if lst[0] == None or not any(lst[1:]) :
+    temp_lis = [1 if i != None else 0 for i in lst]
+    if sum(temp_lis) < 2 :
         raise Exception(f"not enough value to perform task")
         
     return lst
@@ -61,23 +62,41 @@ def FindEvenSerSum(flist, *args, **kargs ):
 
     # process
 
-    if firstelm % 2 != 0:
-        firstelm += 1
+    if firstelm != None:
 
-    mytotal = 0
+        if firstelm % 2 != 0:
+            firstelm += 1
 
-    if rng != None:
-        mytotal = firstelm
-        while(rng > 1):
-            mytotal += rng * 2
+        mytotal = 0
+
+        if rng != None:
+            mytotal = firstelm
+            while(rng > 1):
+                mytotal += rng * 2
+                rng -= 1
+
+            return mytotal
+
+        else:
+            for i in range(firstelm, lastelm + 1, 2):
+                mytotal += i
+            return mytotal
+
+    else:
+
+        if lastelm % 2 != 0:
+            lastelm -= 1
+
+        mytotal = 0
+        cn = lastelm
+
+        while(rng > 0):
+            mytotal += cn
+            cn -= 2
             rng -= 1
 
         return mytotal
 
-    else:
-        for i in range(firstelm, lastelm + 1, 2):
-            mytotal += i
-        return mytotal
 
 
 
@@ -88,4 +107,4 @@ def FindEvenSerSum(flist, *args, **kargs ):
 
 
 if __name__ == "__main__":
-    print(FindEvenSerSum([], 1, 10, last=20))
+    print(FindEvenSerSum([], last=60, rng=5))
