@@ -26,3 +26,8 @@
 
 A -> main -> initial commit
 B -> main -> modify setup files as per requirement
+
+>B -> main -> create [featurex, featurey, featurez]
+
+C -> feturex -> give input mathod in FetureX
+
